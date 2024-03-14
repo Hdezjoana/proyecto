@@ -12,7 +12,7 @@ class Conexion {
     // Constructor de la clase
     public function __construct() {
         // Intentar establecer la conexión a la base de datos
-        $this->conexion = new mysqli($this->servidor, $this->user, $this->password, $this->bd,MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
+        $this->conexion = new mysqli($this->servidor, $this->user, $this->password, $this->bd);
         
         // Verificar si hay errores en la conexión
         if ($this->conexion->connect_error) {
