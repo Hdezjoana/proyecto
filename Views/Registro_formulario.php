@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr">
+<?php
 
+?> 
 <head>
 
     <meta charset="utf-8">
@@ -36,44 +38,50 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" action="registro.php" method="POST">
+
+                            
+                            <form action=" ../Controllers/Registro.php" method="POST">
+                                
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        nombre: <input type="text" class="form-control form-control-user" id="nombre" name="Nombre"
+                                        usuario: <input type="text" class="form-control form-control-user" name="usuario"
                                             placeholder="nombre">
                                     </div>
-                                    <div class="col-sm-6">
-                                        apellido: <input type="text" class="form-control form-control-user" id="apellido"  name="Apellido"
-                                            placeholder="apellido">
-                                    </div>
                                 </div>
+
                                 <div class="form-group">
-                                    usuario: <input type="text" class="form-control form-control-user" id="usuario" name="Usuario"
+                                    correo: <input type="text" class="form-control form-control-user" name="correo"
                                         placeholder="usuario">
                                 </div>
+
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         contraseña: <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" name="Contraseña" placeholder="contraseña">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        repitecontraseña: <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" name="Repitecontraseña" placeholder="repitecontraseña">
+                                           name="contraseña" placeholder="contraseña">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block">Registrar</button>
 
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
-                                <hr>
+                                    <div class="col-sm-6">
+                                        repitecontraseña: <input type="password" class="form-control form-control-user"
+                                            name="contraseña_rev" placeholder="Repite tu contraseña">
+                                    </div>
+                                
+
+                                <div class="col-lg-12 text-center">
+                                    <input type="submit" class="btn w-100 btn-dark neon-purple"
+                                        value="Registrarse">
+                                </div>
+                            </form>
                                 <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
                                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                     <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                                 </a> -->
-                            </form>
+                            
+
+
+
                             <hr>
                             <div class="text-center">
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
@@ -102,40 +110,3 @@
 </body>
 
 </html>
-
-<script>
-    function enviarDatos() {
-        var nombre = document.getElementById("nombre").value;
-        var apellido = document.getElementById("apellido").value;
-        var usuario = document.getElementById("usuario").value;
-        var contraseña = document.getElementById("contraseña").value;
-        var repitecontraseña = document.getElementById("repitecontraseña").value;
-
-        // Validación básica de contraseña
-        if (contraseña !== repitecontraseña) {
-            alert("Las contraseñas no coinciden");
-            return;
-        }
-
-        // Objeto con los datos a enviar
-        var datos = {
-            nombre: nombre,
-            apellido: apellido,
-            usuario: usuario,
-            contraseña: contraseña
-        };
-
-        // Envío de datos mediante AJAX a un endpoint en el backend
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/registrar_usuario", true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                alert("Usuario registrado exitosamente");
-                // Puedes redirigir al usuario a otra página después del registro si lo deseas
-                window.location.href = "/perfil";
-            }
-        };
-        xhr.send(JSON.stringify(datos));
-    }
-</script>

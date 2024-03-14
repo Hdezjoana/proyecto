@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS `login`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `login` (
   `idLogin` varchar(45) NOT NULL,
-  `usuario` varchar(45) NOT NULL,
+  `idregistro` varchar(45) DEFAULT NULL,
   `contraseña` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`idLogin`),
@@ -88,7 +88,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES ('L1','joana','1234','joana');
+INSERT INTO `login` VALUES ('L1','1','1234','joana');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,6 +274,35 @@ INSERT INTO `ofertaventas` VALUES ('OV1','NS','NS','NS'),('OV2','NS','NS','NS');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `registros`
+--
+
+DROP TABLE IF EXISTS `registros`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `registros` (
+  `idregistro` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(45) NOT NULL,
+  `usuario` varchar(45) NOT NULL,
+  `contraseña` varchar(45) NOT NULL,
+  `repitecontraseña` varchar(45) NOT NULL,
+  PRIMARY KEY (`idregistro`),
+  UNIQUE KEY `contraseña_UNIQUE` (`contraseña`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `registros`
+--
+
+LOCK TABLES `registros` WRITE;
+/*!40000 ALTER TABLE `registros` DISABLE KEYS */;
+INSERT INTO `registros` VALUES (1,'Joana','Herrera','joana','1234','1234');
+/*!40000 ALTER TABLE `registros` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tipo`
 --
 
@@ -345,4 +374,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-10 18:23:02
+-- Dump completed on 2024-03-11 18:06:52
