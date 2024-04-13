@@ -46,7 +46,8 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         usuario: <input type="text" class="form-control form-control-user" name="usuario"
                                             placeholder="nombre">
-                                    </div>
+                                    </div
+                                    >
                                 </div>
 
                                 <div class="form-group">
@@ -83,11 +84,12 @@
 
 
                             <hr>
-                            <div class="text-center">
+                            <!-- <div class="text-center">
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
+                            </div> -->
+
                             <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <a class="small" href="usuario_formulario.php">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

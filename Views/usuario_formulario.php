@@ -2,14 +2,6 @@
 <html lang="en">
 <html lang='en'>
 
-<?php
-// Iniciar sesión si aún no se ha iniciado
-session_start();
-
-// Resto de tu código antes de incluir el encabezado
-include "Header.php";
-?>
-
 <head>
 
     <meta charset="utf-8">
@@ -54,15 +46,16 @@ include "Header.php";
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+
+                                    <form class="user" action=" ../Controllers/intrar.php" method="POST">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                            correo: <input type="email" class="form-control form-control-user"
+                                                name="correo" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            contraseña: <input type="password" class="form-control form-control-user"
+                                                name="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -71,23 +64,24 @@ include "Header.php";
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                        <!-- <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        
+                                        </a> -->
+
+                                        <div class="col-lg-12 text-center">
+                                    <input type="submit" class="btn w-100 btn-dark neon-purple"
+                                        value="Iniciar Sesion" href="index.html">
+                            
                                         <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
                                     </form>
+
                                     <hr>
-                                    <div class="text-center">
+                                    <!-- <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
+                                    </div> -->
+                                    
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="Registro_formulario.php">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
@@ -110,6 +104,42 @@ include "Header.php";
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <?php
+    // Verificar si la variable de sesión está configurada y mostrar la modal
+    
+    if (isset($_SESSION['registro_exitoso']) && $_SESSION['registro_exitoso']) {
+        echo '
+        <script>
+            $(document).ready(function () {
+                $("#modalUsuarioRegistrado").modal("show");
+            });
+        </script>';
+        // Reiniciar la variable de sesión para evitar que la modal se muestre en futuras visitas
+        $_SESSION['registro_exitoso'] = false;
+    }
+
+    // Verificar si hay alerta de datos faltantes y mostrar el modal correspondiente
+    if (isset($_GET['alert']) && $_GET['alert'] === 'datos_faltantes') {
+        echo '
+        <script>
+            $(document).ready(function () {
+                $("#modalDatosFaltantes").modal("show");
+            });
+        </script>';
+    }
+
+    // Verificar si hay alerta de credenciales incorrectas y mostrar el modal correspondiente
+    if (isset($_GET['alert']) && $_GET['alert'] === 'credenciales_incorrectas') {
+        echo '
+        <script>
+            $(document).ready(function () {
+                $("#modalCredencialesIncorrectas").modal("show");
+            });
+        </script>';
+    }
+    ?>
+    
 
 </body>
 

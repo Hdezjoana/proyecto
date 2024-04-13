@@ -23,11 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Convertir la contraseña a formato MD5
-    $contraseña_md5 = md5($contraseña);
-    
     // Registrar usuario
-    $resultado = registrarUsuario(1, $usuario, $correo, $contraseña_md5);
+    $resultado = registrarUsuario($usuario, $correo, $contraseña);
 
     if ($resultado === "usuario_duplicado") {
         // Usuario ya existe, redirigir al formulario de registro con mensaje de error
@@ -115,3 +112,6 @@ function registrarUsuario($usuario, $correo, $contraseña) {
         return false;
     }
 }
+?>
+
+
